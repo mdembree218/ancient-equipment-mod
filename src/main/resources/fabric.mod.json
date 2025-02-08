@@ -1,0 +1,31 @@
+{
+	"schemaVersion": 1,
+	"id": "ancient-equipment-mod",
+	"version": "${version}",
+	"name": "Ancient Equipment Mod",
+	"description": "This is small mod that adds unique tools and equipment to minecraft to spice up the game play in a fun but not substantial way.",
+	"authors": [
+		"mdembree218"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/ancient-equipment-mod/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.saraph.AncientEquipmentMod"
+		]
+	},
+	"depends": {
+		"fabricloader": ">=0.16.10",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
