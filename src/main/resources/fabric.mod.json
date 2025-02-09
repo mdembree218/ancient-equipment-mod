@@ -16,7 +16,7 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"net.saraph.AncientEquipmentMod"
+			"net.mdembree218.AncientEquipmentMod"
 		]
 	},
 	"depends": {

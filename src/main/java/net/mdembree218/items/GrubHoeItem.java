@@ -18,6 +18,7 @@ public class GrubHoeItem extends MiningToolItem {
     public GrubHoeItem(ToolMaterial toolMaterial, float attackDamage, float attackSpeed, Settings settings) {
         super(attackDamage, attackSpeed, toolMaterial, BlockTags.SHOVEL_MINEABLE, settings);
     }
+
     @Override
     public ActionResult useOnBlock(ItemUsageContext context) {
         World world = context.getWorld();
@@ -52,38 +53,100 @@ public class GrubHoeItem extends MiningToolItem {
         return player.getHorizontalFacing().getOpposite();
     }
 
+    //    private boolean isSurroundedByAir(World world, BlockPos newPos, Direction movingDirection) {
+//        return switch (movingDirection) {
+//            case NORTH -> world.getBlockState(newPos.north()).isAir() &&
+//                    world.getBlockState(newPos.east()).isAir() &&
+//                    world.getBlockState(newPos.west()).isAir() &&
+//                    world.getBlockState(newPos.up()).isAir() &&
+//                    world.getBlockState(newPos.down()).isAir() &&
+//                    world.getBlockState(newPos.north().down()).isAir() &&
+//                    world.getBlockState(newPos.north().up()).isAir() &&
+//                    world.getBlockState(newPos.east().down()).isAir() &&
+//                    world.getBlockState(newPos.east().up()).isAir() &&
+//                    world.getBlockState(newPos.west().down()).isAir() &&
+//                    world.getBlockState(newPos.west().up()).isAir() &&
+//                    world.getBlockState(newPos.south().down()).isAir() &&
+//                    world.getBlockState(newPos.south().up()).isAir();
+//            case EAST -> world.getBlockState(newPos.north()).isAir() &&
+//                    world.getBlockState(newPos.east()).isAir() &&
+//                    world.getBlockState(newPos.south()).isAir() &&
+//                    world.getBlockState(newPos.up()).isAir() &&
+//                    world.getBlockState(newPos.down()).isAir() &&
+//                    world.getBlockState(newPos.north().down()).isAir() &&
+//                    world.getBlockState(newPos.north().up()).isAir() &&
+//                    world.getBlockState(newPos.east().down()).isAir() &&
+//                    world.getBlockState(newPos.east().up()).isAir() &&
+//                    world.getBlockState(newPos.west().down()).isAir() &&
+//                    world.getBlockState(newPos.west().up()).isAir() &&
+//                    world.getBlockState(newPos.south().down()).isAir() &&
+//                    world.getBlockState(newPos.south().up()).isAir();
+//            case SOUTH -> world.getBlockState(newPos.east()).isAir() &&
+//                    world.getBlockState(newPos.south()).isAir() &&
+//                    world.getBlockState(newPos.west()).isAir() &&
+//                    world.getBlockState(newPos.up()).isAir() &&
+//                    world.getBlockState(newPos.down()).isAir() &&
+//                    world.getBlockState(newPos.north().down()).isAir() &&
+//                    world.getBlockState(newPos.north().up()).isAir() &&
+//                    world.getBlockState(newPos.east().down()).isAir() &&
+//                    world.getBlockState(newPos.east().up()).isAir() &&
+//                    world.getBlockState(newPos.west().down()).isAir() &&
+//                    world.getBlockState(newPos.west().up()).isAir() &&
+//                    world.getBlockState(newPos.south().down()).isAir() &&
+//                    world.getBlockState(newPos.south().up()).isAir();
+//            case WEST -> world.getBlockState(newPos.north()).isAir() &&
+//                    world.getBlockState(newPos.south()).isAir() &&
+//                    world.getBlockState(newPos.west()).isAir() &&
+//                    world.getBlockState(newPos.up()).isAir() &&
+//                    world.getBlockState(newPos.down()).isAir() &&
+//                    world.getBlockState(newPos.north().down()).isAir() &&
+//                    world.getBlockState(newPos.north().up()).isAir() &&
+//                    world.getBlockState(newPos.east().down()).isAir() &&
+//                    world.getBlockState(newPos.east().up()).isAir() &&
+//                    world.getBlockState(newPos.west().down()).isAir() &&
+//                    world.getBlockState(newPos.west().up()).isAir() &&
+//                    world.getBlockState(newPos.south().down()).isAir() &&
+//                    world.getBlockState(newPos.south().up()).isAir();
+//            case UP -> world.getBlockState(newPos.north()).isAir() &&
+//                    world.getBlockState(newPos.east()).isAir() &&
+//                    world.getBlockState(newPos.south()).isAir() &&
+//                    world.getBlockState(newPos.west()).isAir() &&
+//                    world.getBlockState(newPos.up()).isAir() &&
+//                    world.getBlockState(newPos.north().down()).isAir() &&
+//                    world.getBlockState(newPos.north().up()).isAir() &&
+//                    world.getBlockState(newPos.east().down()).isAir() &&
+//                    world.getBlockState(newPos.east().up()).isAir() &&
+//                    world.getBlockState(newPos.west().down()).isAir() &&
+//                    world.getBlockState(newPos.west().up()).isAir() &&
+//                    world.getBlockState(newPos.south().down()).isAir() &&
+//                    world.getBlockState(newPos.south().up()).isAir();
+//            case DOWN -> world.getBlockState(newPos.north()).isAir() &&
+//                    world.getBlockState(newPos.east()).isAir() &&
+//                    world.getBlockState(newPos.south()).isAir() &&
+//                    world.getBlockState(newPos.west()).isAir() &&
+//                    world.getBlockState(newPos.down()).isAir() &&
+//                    world.getBlockState(newPos.north().down()).isAir() &&
+//                    world.getBlockState(newPos.north().up()).isAir() &&
+//                    world.getBlockState(newPos.east().down()).isAir() &&
+//                    world.getBlockState(newPos.east().up()).isAir() &&
+//                    world.getBlockState(newPos.west().down()).isAir() &&
+//                    world.getBlockState(newPos.west().up()).isAir() &&
+//                    world.getBlockState(newPos.south().down()).isAir() &&
+//                    world.getBlockState(newPos.south().up()).isAir();
+//        };
+//    }
     private boolean isSurroundedByAir(World world, BlockPos newPos, Direction movingDirection) {
-        return switch (movingDirection) {
-            case NORTH -> world.getBlockState(newPos.north()).isAir() &&
-                    world.getBlockState(newPos.east()).isAir() &&
-                    world.getBlockState(newPos.west()).isAir() &&
-                    world.getBlockState(newPos.up()).isAir() &&
-                    world.getBlockState(newPos.down()).isAir();
-            case EAST -> world.getBlockState(newPos.north()).isAir() &&
-                    world.getBlockState(newPos.east()).isAir() &&
-                    world.getBlockState(newPos.south()).isAir() &&
-                    world.getBlockState(newPos.up()).isAir() &&
-                    world.getBlockState(newPos.down()).isAir();
-            case SOUTH -> world.getBlockState(newPos.east()).isAir() &&
-                    world.getBlockState(newPos.south()).isAir() &&
-                    world.getBlockState(newPos.west()).isAir() &&
-                    world.getBlockState(newPos.up()).isAir() &&
-                    world.getBlockState(newPos.down()).isAir();
-            case WEST -> world.getBlockState(newPos.north()).isAir() &&
-                    world.getBlockState(newPos.south()).isAir() &&
-                    world.getBlockState(newPos.west()).isAir() &&
-                    world.getBlockState(newPos.up()).isAir() &&
-                    world.getBlockState(newPos.down()).isAir();
-            case UP -> world.getBlockState(newPos.north()).isAir() &&
-                    world.getBlockState(newPos.east()).isAir() &&
-                    world.getBlockState(newPos.south()).isAir() &&
-                    world.getBlockState(newPos.west()).isAir() &&
-                    world.getBlockState(newPos.up()).isAir();
-            case DOWN -> world.getBlockState(newPos.north()).isAir() &&
-                    world.getBlockState(newPos.east()).isAir() &&
-                    world.getBlockState(newPos.south()).isAir() &&
-                    world.getBlockState(newPos.west()).isAir() &&
-                    world.getBlockState(newPos.down()).isAir();
+        BlockPos[] positions = {
+                newPos.north(), newPos.east(), newPos.south(), newPos.west(), newPos.up(), newPos.down(),
+                newPos.north().down(), newPos.north().up(), newPos.east().down(), newPos.east().up(),
+                newPos.west().down(), newPos.west().up(), newPos.south().down(), newPos.south().up()
         };
+
+        for (BlockPos pos : positions) {
+            if (!world.getBlockState(pos).isAir()) {
+                return false;
+            }
+        }
+        return true;
     }
 }
