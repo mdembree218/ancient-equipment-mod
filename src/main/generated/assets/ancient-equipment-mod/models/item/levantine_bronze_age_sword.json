@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/handheld",
-  "textures": {
-    "layer0": "ancient-equipment-mod:item/levantine_bronze_age_sword"
-  }
-}
