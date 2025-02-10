@@ -1,4 +1,4 @@
-package net.mdembree218.items;
+package net.mdembree218;
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.item.ItemGroup;
@@ -7,7 +7,6 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
-import net.mdembree218.AncientEquipmentMod;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -24,7 +23,19 @@ public class ModItemGroups {
             })
             .build();
 
+    public static final List<ItemStack> ANCIENT_WEAPONS_CONTENTS = new LinkedList<>();
+    public static final ItemGroup ANCIENT_WEAPONS = FabricItemGroup.builder()
+            .displayName(Text.translatable("itemGroup." + AncientEquipmentMod.MOD_ID + ".ancient_weapons"))
+            .icon(() -> new ItemStack(ModEquipmentItems.LEVANTINE_BRONZE_AGE_SWORD))
+            .entries((displayContext, entries) -> {
+                for (ItemStack item : ANCIENT_WEAPONS_CONTENTS) {
+                    entries.add(item);
+                }
+            })
+            .build();
+
     public static void register() {
-        Registry.register(Registries.ITEM_GROUP, Identifier.of(AncientEquipmentMod.MOD_ID, "stone_blocks"), ARCHAEOLOGY);
+        Registry.register(Registries.ITEM_GROUP, Identifier.of(AncientEquipmentMod.MOD_ID, "archaeology"), ARCHAEOLOGY);
+        Registry.register(Registries.ITEM_GROUP, Identifier.of(AncientEquipmentMod.MOD_ID, "ancient_weapons"), ANCIENT_WEAPONS);
     }
 }

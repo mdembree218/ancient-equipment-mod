@@ -1,4 +1,4 @@
-package net.mdembree218.items;
+package net.mdembree218;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -16,7 +16,7 @@ import net.minecraft.world.World;
 public class GrubHoeItem extends MiningToolItem {
 
     public GrubHoeItem(ToolMaterial toolMaterial, float attackDamage, float attackSpeed, Settings settings) {
-        super(attackDamage, attackSpeed, toolMaterial, BlockTags.SHOVEL_MINEABLE, settings);
+        super(toolMaterial, BlockTags.SHOVEL_MINEABLE, attackDamage, attackSpeed, settings.maxCount(1));
     }
 
     @Override
@@ -34,7 +34,7 @@ public class GrubHoeItem extends MiningToolItem {
             BlockPos newPos = targetPos.offset(moveDirection);
 
             if ((world.getBlockState(newPos).isAir() || targetState.isIn(BlockTags.REPLACEABLE_BY_TREES)) && !player.getBlockPos().equals(newPos) && !player.getBlockPos().up().equals(newPos)) {
-                if (!isSurroundedByAir(world, newPos, moveDirection)) {
+                if (!isSurroundedByAir(world, newPos)) {
                     world.setBlockState(newPos, targetState);
                     world.setBlockState(targetPos, Blocks.AIR.getDefaultState());
                     return ActionResult.SUCCESS;
@@ -135,7 +135,7 @@ public class GrubHoeItem extends MiningToolItem {
 //                    world.getBlockState(newPos.south().up()).isAir();
 //        };
 //    }
-    private boolean isSurroundedByAir(World world, BlockPos newPos, Direction movingDirection) {
+    private boolean isSurroundedByAir(World world, BlockPos newPos) {
         BlockPos[] positions = {
                 newPos.north(), newPos.east(), newPos.south(), newPos.west(), newPos.up(), newPos.down(),
                 newPos.north().down(), newPos.north().up(), newPos.east().down(), newPos.east().up(),

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "ancient-equipment-mod:item/grub_hoe"
+  }
+}
